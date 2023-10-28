@@ -1,0 +1,140 @@
+<div class="container">
+  <h1>Coffee</h1>
+  <div
+    class="card-container"
+    fxLayout="row wrap"
+    fxLayoutAlign="center center"
+    id="coffee"
+  >
+    <div
+      *ngFor="let element of orderList; let i = index"
+      class="card-container"
+    >
+      <div
+        class="card"
+        style="width: 18rem"
+        fxLayout="column"
+        *ngIf="element.availability"
+      >
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <img
+              src="{{
+                'assets/images/' + element.productName.toLowerCase() + '.png'
+              }}"
+            />
+          </div>
+          <h2 class="card-title">{{ element.productName | titlecase }}</h2>
+        </div>
+
+        <div class="card-body">
+          <div>
+            <form #coffeeInput="ngForm">
+              <div class="coffee-extra">
+                <mat-form-field appearance="fill">
+                  <mat-label>Size</mat-label>
+                  <mat-select
+                    [(ngModel)]="element.size"
+                    name="size"
+                    (mouseleave)="getTotal(i)"
+                    required=""
+                  >
+                    <mat-option [value]="element.price.small">
+                      Small {{ element.price.small | currency }}
+                    </mat-option>
+                    <mat-option [value]="element.price.medium">
+                      Medium {{ element.price.medium | currency }}
+                    </mat-option>
+                    <mat-option [value]="element.price.large">
+                      Large {{ element.price.large | currency }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="coffee-extra">
+                <mat-form-field>
+                  <mat-label>Extras</mat-label>
+                  <mat-select
+                    [(ngModel)]="element.extra$"
+                    name="extras"
+                    (mouseleave)="getTotal(i)"
+                  >
+                    <mat-option [value]="element.extra.coconut">
+                      Coconut {{ element.extra.coconut | currency }}
+                    </mat-option>
+                    <mat-option [value]="element.extra.extraShot">
+                      Extra shot {{ element.extra.extraShot | currency }}
+                    </mat-option>
+                    <mat-option [value]="element.extra.oat">
+                      Oat {{ element.extra.oat | currency }}
+                    </mat-option>
+                    <mat-option [value]="element.extra.soy">
+                      Soy {{ element.extra.soy | currency }}
+                    </mat-option>
+                    <mat-option [value]="element.extra.lactoseFree">
+                      Lactose free coconut
+                      {{ element.extra.lactoseFree | currency }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <div
+                  class="btn-group"
+                  role="group"
+                  aria-label="Basic example"
+                  name="actions"
+                >
+                  <button
+                    type="button"
+                    mat-stroked-button
+                    (pointerdown)="decrement(i)"
+                    (click)="getTotal(i)"
+                    [disabled]="!element.size"
+                  >
+                    <fa-icon [icon]="minusIcon"></fa-icon>
+                  </button>
+                  <div fxLayout="row" fxLayoutAlign="center center">
+                    <h6 class="quantity">{{ element.quantity }}</h6>
+                  </div>
+                  <button
+                    type="button"
+                    mat-stroked-button
+                    [disabled]="!element.size"
+                    (pointerdown)="increment(i)"
+                    (click)="getTotal(i)"
+                  >
+                    <fa-icon [icon]="addIcon"></fa-icon>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="check-out"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+                name="total"
+              ></div>
+              <div fxLayout="column">
+                <button
+                  [disabled]="!element.quantity"
+                  color="primary"
+                  (click)="order(i, coffeeInput)"
+                  (click)="resetFields(element)"
+                  (click)="disableSuccessPrompt(element)"
+                  mat-raised-button
+                >
+                  Add to cart
+                  <span>{{ element.total | currency }}</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="success-prompt" *ngIf="element.success">
+          <i class="bi bi-check2-circle"></i>
+          <span>Added to cart </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

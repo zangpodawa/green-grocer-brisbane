@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap");
+
+.business-container {
+  margin: 10px;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.business-container h4 {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+li,
+p {
+  padding: 5px;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tel-link,
+a {
+  width: 80%;
+  text-decoration: none;
+  border-radius: 5px;
+  color: black;
+  background-color: #e5f5ea;
+}
+
+h1,
+h2 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 25px;
+}
+
+.opening-container {
+  margin-top: 5rem;
+}

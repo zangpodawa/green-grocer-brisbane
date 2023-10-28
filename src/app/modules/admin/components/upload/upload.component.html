@@ -1,0 +1,147 @@
+<div class="upload" fxlayout="column" fxLayoutAlign="center center">
+  <form
+    class="form"
+    action=""
+    fxFlex="60%"
+    fxFlex.lt-sm="90%"
+    #userInput="ngForm"
+  >
+    <h1>New product</h1>
+    <div class="form-check" class="coffee-item">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        name="coffee-item"
+        [(ngModel)]="isCoffee"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        (IF you are uploading coffee products, please tick)
+      </label>
+    </div>
+
+    <div class="product-name">
+      <label for="">Product Name</label>
+      <input
+        [(ngModel)]="_productName"
+        name="productName"
+        type="text"
+        class="form-control"
+        required=""
+      />
+      <p class="error" *ngIf="hasError">
+        Name should have only aplha characters
+      </p>
+    </div>
+
+    <div class="price" *ngIf="!isCoffee">
+      <label for="">Price</label>
+      <input
+        [(ngModel)]="_price"
+        name="price"
+        type="number"
+        class="form-control"
+        required=""
+      />
+      <p class="error" *ngIf="hasError">
+        Price should have only numeric characters
+      </p>
+    </div>
+
+    <div>
+      <div>
+        <label for="">Availabilty</label>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="status"
+            id="sold out"
+            value="false"
+            [(ngModel)]="_availability"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Sold out
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="status"
+            id="available"
+            value="true"
+            [(ngModel)]="_availability"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Available
+          </label>
+        </div>
+        <p class="error" *ngIf="hasError">Availabilty is required</p>
+      </div>
+    </div>
+    <div>
+      <label for="">Category</label>
+      <select
+        [(ngModel)]="_category"
+        name="category"
+        class="form-select"
+        aria-label="Default select example"
+        required=""
+      >
+        <option selected>Select category</option>
+        <option [value]="element" *ngFor="let element of category">
+          {{ element }}
+        </option>
+      </select>
+      <p class="error" *ngIf="hasError">Category required</p>
+    </div>
+    <div class="ingredients" *ngIf="!isCoffee">
+      <label for="">Ingredients</label>
+      <textarea
+        name="ingredients"
+        id=""
+        cols="30"
+        rows="6"
+        class="form-control"
+        [(ngModel)]="_ingredients"
+        required=""
+      ></textarea>
+      <p class="error" *ngIf="hasError">Ingredients required</p>
+    </div>
+
+    <!-- <div class="image-upload">
+      <label for="image">Upload Image</label>
+      <input
+        type="file"
+        id="image"
+        (change)="onFileChange($event)"
+        class="form-control"
+      />
+      <p class="error" *ngIf="hasError">Image is required</p>
+      <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image"> -->
+    <!-- </div> -->
+
+    <button
+      (click)="upload(userInput)"
+      mat-raised-button
+      [disabled]="userInput.invalid"
+      *ngIf="!isCoffee"
+    >
+      Post
+    </button>
+    <p *ngIf="isSuccess">Product uploaded</p>
+
+    <div>
+      <button
+        (click)="uploadCoffee(userInput)"
+        mat-raised-button
+        [disabled]="userInput.invalid"
+        *ngIf="isCoffee"
+      >
+        Upload coffee
+      </button>
+      <p *ngIf="isSuccess">Product uploaded</p>
+    </div>
+  </form>
+</div>

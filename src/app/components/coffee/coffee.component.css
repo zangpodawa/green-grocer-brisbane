@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
+
+.price {
+  font-family: "Righteous", cursive;
+  font-size: 18px;
+}
+
+.card {
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.card div {
+  margin: 2px;
+}
+
+/*
+#total {
+  font-family: "Hammersmith One", sans-serif;
+  color: rgb(20, 128, 88);
+  font-size: 25px;
+} */
+
+.quantity {
+  margin: 0 10px 0 10px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+}
+
+h2 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 25px;
+  letter-spacing: 2px;
+  color: rgb(72, 59, 41);
+}
+
+.coffee-extra {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

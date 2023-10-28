@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Lepcha&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap");
+.footer {
+  background-color: #f9f9f9;
+  padding: 30px;
+}
+
+.copyright {
+  background-color: #e5f5ea;
+  padding-bottom: 10px;
+}
+
+li {
+  color: #026467;
+  font-family: "Noto Sans Lepcha", sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.sign {
+  font-family: "Libre Barcode 39 Text", cursive;
+  font-size: 30px;
+  color: #026467;
+  margin-left: 0.5rem;
+}
+
+fa-icon {
+  color: #026467;
+  width: 20px;
+}
+
+.social {
+  color: #026467;
+  font-size: 25px;
+  letter-spacing: 2px;
+}
+
+@media screen and (width < 600px) {
+  img {
+    width: 70px;
+    height: 50px;
+  }
+}

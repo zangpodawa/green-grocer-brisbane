@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Zanabazar+Square&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap");
+
+h1 {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+h2 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  line-height: 2rem;
+}
+
+ol.dietary {
+  list-style-type: decimal;
+}
+
+/* .container {
+  margin: 3rem;
+} */
+
+.faq {
+  margin-top: 3rem;
+}

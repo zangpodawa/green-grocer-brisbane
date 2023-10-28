@@ -1,0 +1,79 @@
+<mat-toolbar
+  class="tool-bar"
+  color="primary"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+>
+  <div>
+    <h1>Green Grocer Cafe</h1>
+  </div>
+  <!-- <div>
+    <fa-icon
+      [icon]="faBars"
+      (click)="toogle()"
+      (click)="sidenav.toggle()"
+      *ngIf="!active"
+    ></fa-icon>
+    <fa-icon
+      [icon]="faXmark"
+      (click)="toogle()"
+      (click)="sidenav.toggle()"
+      *ngIf="active"
+    ></fa-icon>
+  </div> -->
+
+  <!-- Logout btn -->
+  <!-- <div class="logout" fxLayout="row" fxLayoutAlign="start center">
+    <fa-icon [icon]="logout"></fa-icon>
+    <li>Logout</li>
+  </div> -->
+
+  <div fxLayoutGap="1%">
+    <button mat-button [mat-menu-trigger-for]="menu">
+      <i class="bi bi-caret-down-fill"></i>Hi, {{ userName }}
+    </button>
+    <mat-menu #menu="matMenu" fxLayout="row">
+      <button (click)="adminLogout()" class="mat-menu" mat-menu-item>
+        <fa-icon [icon]="logout"></fa-icon>Log out
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    [mode]="'side'"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    opened=""
+  >
+    <div class="nav-list" fxLayout="row" fxLayoutAlign="start center">
+      <fa-icon [icon]="order"></fa-icon>
+      <li routerLink="update" routerLink="orders">Orders</li>
+    </div>
+    <div class="nav-list" fxLayout="row" fxLayoutAlign="start center">
+      <fa-icon [icon]="update"></fa-icon>
+      <li routerLink="update">Update</li>
+    </div>
+    <div class="nav-list" fxLayout="row" fxLayoutAlign="start center">
+      <fa-icon [icon]="upload"></fa-icon>
+      <li routerLink="update" routerLink="upload">Post Product</li>
+    </div>
+    <div class="nav-list" fxLayout="row" fxLayoutAlign="start center">
+      <fa-icon [icon]="review"></fa-icon>
+      <li routerLink="review">Feedbacks</li>
+    </div>
+
+    <div class="nav-list" fxLayout="row" fxLayoutAlign="start center">
+      <fa-icon [icon]="analysis"></fa-icon>
+      <li routerLink="analysis">Analysis</li>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-review *ngIf="router.url.includes('review')"></app-review>
+    <app-orders *ngIf="router.url.includes('orders')"></app-orders>
+    <app-upload *ngIf="router.url.includes('upload')"></app-upload>
+    <app-update *ngIf="router.url.includes('update')"></app-update>
+    <app-analytics *ngIf="router.url.includes('analysis')"></app-analytics>
+  </mat-sidenav-content>
+</mat-sidenav-container>

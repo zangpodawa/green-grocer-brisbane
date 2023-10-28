@@ -1,0 +1,70 @@
+<div>
+  <div>
+    <h1>Sandwiches, Wraps, Buns, Bagels</h1>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div *ngFor="let element of bagel; let i = index">
+      <div
+        *ngIf="element.availability"
+        class="card"
+        style="width: 18rem"
+        id="bagel"
+      >
+        <div class="card-body">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <img
+              src="{{
+                'assets/images/' +
+                  element.productName.toLowerCase().trim() +
+                  '.png'
+              }}"
+            />
+          </div>
+          <h5 class="card-title">{{ element.productName }}</h5>
+
+          <div class="action-items">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                type="button"
+                mat-stroked-button
+                (click)="decrement(i)"
+                (click)="getTotal(i)"
+              >
+                <fa-icon [icon]="minusIcon"></fa-icon>
+              </button>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <h6 class="quantity">{{ element.quantity }}</h6>
+              </div>
+              <button
+                type="button"
+                mat-stroked-button
+                (click)="increment(i)"
+                (click)="getTotal(i)"
+              >
+                <fa-icon [icon]="addIcon"></fa-icon>
+              </button>
+            </div>
+            <div fxLayout="column">
+              <button
+                [disabled]="!element.quantity"
+                color="primary"
+                mat-raised-button
+                (click)="order(i)"
+                (click)="resetFields(element)"
+              >
+                Add to cart <span>{{ element.total | currency }} </span>
+              </button>
+            </div>
+          </div>
+          <div class="product-price">
+            <p>{{ element.price | currency }}</p>
+          </div>
+        </div>
+        <div class="success-prompt" *ngIf="element.success">
+          <i class="bi bi-check2-circle"></i>
+          <span> Added to cart </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

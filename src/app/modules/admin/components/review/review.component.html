@@ -1,0 +1,57 @@
+<div class="container-fluid" fxLayout="row" fxLayoutAlign="center center">
+  <div class="container" fxLayout="column" fxLayoutAlign="center center">
+    <div class="card-container">
+      <h1>Customer feedbacks</h1>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div class="cards" *ngFor="let element of feedback$">
+          <div>
+            <div>
+              <p class="author">
+                {{ element.name | titlecase }}
+                <span *ngIf="element.isPosted"
+                  ><i class="bi bi-file-earmark-post-fill"></i
+                ></span>
+              </p>
+            </div>
+            <div>
+              <p>{{ element.comment }}</p>
+              <p class="date">Posted on {{ element.date }}</p>
+            </div>
+            <div
+              class="actions-wrapper"
+              fxLayout="row"
+              fxLayoutAlign="end center"
+            >
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic outlined example"
+              >
+                <button
+                  (click)="delete(element)"
+                  type="button"
+                  class="btn btn-outline-secondary"
+                >
+                  Delete
+                </button>
+                <button
+                  (click)="post(element)"
+                  type="button"
+                  class="btn btn-outline-secondary"
+                >
+                  Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isDeleted" class="delete-message">
+      <p>Post successfully deleted</p>
+    </div>
+    <div *ngIf="isPosted" class="post-message">
+      <p>Feedback successfully posted</p>
+    </div>
+  </div>
+</div>

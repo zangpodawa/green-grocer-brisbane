@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="login">
+    <h1>Log in</h1>
+    <form [formGroup]="user">
+      <div class="elements">
+        <label for="">Email</label>
+        <input type="text" name="" id="email" formControlName="email" />
+      </div>
+      <div class="elements">
+        <label for="">Password</label>
+        <input
+          type="password"
+          name=""
+          id="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="btn-wrapper">
+        <button
+          class="btn btn-primary"
+          [disabled]="user.invalid"
+          (click)="signIn()"
+        >
+          Sign in
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+            *ngIf="spinner"
+          ></span>
+        </button>
+        <p class="error" *ngIf="invalid">
+          Incorrect password or email, try again
+        </p>
+        <p class="error" *ngIf="adminError">You are not an admin</p>
+      </div>
+    </form>
+  </div>
+
+  <!-- <p>{{ test | async }}</p> -->
+
+  <!-- <button (click)="get()">NODE</button>
+  <button (click)="myPost()">Post</button> -->
+</div>
+
+<!-- <div>
+  <button (click)="googleSignin()">Google Sign in</button>
+</div> -->

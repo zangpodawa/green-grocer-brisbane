@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="orders">
+    <h1>Orders</h1>
+    <table class="table table-bordered">
+      <thead class="thead-primary">
+        <tr>
+          <th class="center">Order No</th>
+          <th class="center">Items</th>
+          <th class="center">Time</th>
+          <th class="center">Total</th>
+          <th class="center">Payment Status</th>
+          <th class="center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of allOrders">
+          <td class="center" *ngIf="!element.isComplete">
+            {{ element.orderID }}
+          </td>
+          <td *ngIf="!element.isComplete">
+            <div>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="center">Product Name</th>
+                    <th class="center">Quantity</th>
+                    <th class="center">Size</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let coffee of element.coffee">
+                    <td class="center">{{ coffee.productName | titlecase }}</td>
+                    <td class="span-3 center">{{ coffee.quantity }}</td>
+                    <td class="span-3 center">{{ getSize(coffee.size) }}</td>
+                  </tr>
+                  <tr *ngFor="let item of element.items">
+                    <td class="center">{{ item.productName | titlecase }}</td>
+                    <td class="span-3 center">{{ item.quantity }}</td>
+                    <td class="span-3 center">{{ item.price | currency }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+          <td *ngIf="!element.isComplete" class="center">
+            {{ element.time | date : "h:mm:ss a" }}
+          </td>
+          <td *ngIf="!element.isComplete" class="center">
+            {{ element.total | currency }}
+          </td>
+          <td *ngIf="!element.isComplete" class="center">
+            {{ element.paymentStatus | titlecase }}
+            <span *ngIf="element.isComplete">Pending</span>
+          </td>
+          <ng-template #pending>Pending</ng-template>
+
+          <td *ngIf="!element.isComplete" class="center">
+            <div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  (click)="completed(element.id)"
+                />
+                <label class="form-check-label"> Mark as completed </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="success" *ngIf="success">
+    Order completion confirmation! You can view all the completed orders in the
+    COMPLETED ORDERS SECTIONS
+  </p>
+</div>
+
+<div class="container">
+  <div class="order-wrapper"></div>
+</div>

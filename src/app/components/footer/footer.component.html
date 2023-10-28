@@ -1,0 +1,70 @@
+<div
+  class="footer"
+  fxLayout="row"
+  fxLayoutAlign="space-evenly start"
+  fxLayout.xs="column"
+  fxLayoutAlign.lt-sm="center start"
+  fxLayoutGap.lt-sm="1rem"
+>
+  <div class="logo-container">
+    <img
+      src="../../../assets/images/greengrocer.jpg"
+      alt="logo"
+      width="100px"
+      height="70px"
+    />
+  </div>
+  <div
+    class="items"
+    fxLayout="column"
+    fxLayoutAlign="space-evenly start"
+    fxLayout.lt-sm="column"
+    fxLayoutAlign.lt-sm="center start"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <fa-icon [icon]="policy"></fa-icon>
+      <li routerLink="privacy">Privacy and Policy</li>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <fa-icon [icon]="about"></fa-icon>
+      <li routerLink="about">About us</li>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <fa-icon [icon]="contact"></fa-icon>
+      <li routerLink="contact">Contact</li>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <fa-icon [icon]="faq"></fa-icon>
+      <li routerLink="faq">FAQ</li>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.5rem">
+      <fa-icon [icon]="feedback"></fa-icon>
+      <li routerLink="feedback">Feedback</li>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h1 class="social">Follow us</h1>
+    </div>
+    <div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <fa-icon [icon]="facebook"></fa-icon>
+        <a href="#"><li>Facebook</li></a>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <fa-icon [icon]="instagram"></fa-icon>
+
+        <li>Instagram</li>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="copyright"
+  fxLayout="row wrap"
+  fxLayoutAlign="center center"
+  fxLayout.xs="column"
+>
+  <li>&copy; Copyright {{ year }}, Green Grocer</li>
+  <span class="sign">Brisbane AU</span>
+</div>

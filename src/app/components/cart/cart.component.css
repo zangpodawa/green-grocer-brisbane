@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+.container-fluid {
+  min-height: 70dvh;
+}
+
+.container {
+  margin: 30px 0 30px 0;
+}
+.card {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 1rem;
+}
+
+.header {
+  position: relative;
+}
+
+.header h5 {
+  font-family: "Secular One", sans-serif;
+  text-align: center;
+}
+
+/* .header h1::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: rgb(30, 154, 86);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+} */
+
+.item {
+  position: relative;
+  margin: 10px;
+}
+
+.item-price {
+  font-weight: bolder;
+}
+
+.item-container {
+  width: 100%;
+}
+
+.item::after {
+  position: absolute;
+  content: "";
+  height: 0.09px;
+  width: 100%;
+  background-color: rgb(68, 63, 58);
+  bottom: 0;
+  opacity: 0.3;
+}
+
+.name h6 {
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+.edit-order {
+  width: 100%;
+}
+
+.edit-order button {
+  margin: 2px;
+  width: 100%;
+}
+
+/* .order-total p {
+  font-family: "Archivo Black", sans-serif;
+  letter-spacing: 2px;
+  font-size: 20px;
+} */
+
+.edit-coffee {
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+}
+
+.user-message {
+  margin: 5rem 0 5rem 0;
+}
+
+.user-message p {
+  font-family: "Roboto Mono", monospace;
+}
+
+.order-number h1 {
+  font-size: 20px;
+}
+
+.order-number h2 {
+  font-size: 40px;
+  color: rgb(82, 54, 76);
+  font-weight: bold;
+}
+
+.order-number h1,
+h2 {
+  text-align: center;
+}
+
+.quantity {
+  padding: 0 1rem 0 1rem;
+}
+
+.edit {
+  padding: 0.5rem;
+}
+
+i {
+  font-size: 20px;
+}
+
+.edit {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  place-items: center;
+  text-align: center;
+  margin: 1%;
+}
+
+.edit-section {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgb(81, 70, 70);
+  padding: 2%;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  gap: 1rem;
+}
+
+.edit-section-two {
+  margin: 1rem;
+}
+
+.emptycart-wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.empty-cart {
+  display: grid;
+  place-items: center;
+}
+
+.empty-cart p {
+  color: rgb(208, 45, 45);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bolder;
+  border: 1px solid black;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.add-cancel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.order-total {
+  border: 1px solid red;
+  width: 100%;
+}
+.name {
+  width: 50%;
+}
+
+button {
+  width: 100%;
+}
+
+@media screen and (width < 500px) {
+  .empty-cart p {
+    font-size: 14px;
+  }
+}
