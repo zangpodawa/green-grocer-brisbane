@@ -1,3 +1,4 @@
+import { SigninComponent } from './components/signin/signin.component';
 import { AuthGuardGuard } from './../../auth-guard.guard';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { ReviewComponent } from './components/review/review.component';
@@ -36,8 +37,8 @@ const routes: Routes = [
         component: AnalyticsComponent,
       },
       {
-        path: 'adlogin',
-        component: AdminloginComponent,
+        path: 'mylogin',
+        component: SigninComponent,
       },
       {
         path: '',

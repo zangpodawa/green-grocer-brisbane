@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "upperwestsidedeli": {
+    "greengrocercafe": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/upperwestsidedeli",
+            "outputPath": "dist/greengrocercafe",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "upperwestsidedeli:build:production"
+              "browserTarget": "greengrocercafe:build:production"
             },
             "development": {
-              "browserTarget": "upperwestsidedeli:build:development"
+              "browserTarget": "greengrocercafe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "upperwestsidedeli:build"
+            "browserTarget": "greengrocercafe:build"
           }
         },
         "test": {
@@ -95,9 +95,9 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "upperwestsidedeli:build:production",
-            "firebaseProject": "upperwestsidedeli",
-            "firebaseHostingSite": "upperwestsidedeli"
+            "browserTarget": "greengrocercafe:build:production",
+            "firebaseProject": "greengrocercafe",
+            "firebaseHostingSite": "greengrocercafe"
           }
         }
       }

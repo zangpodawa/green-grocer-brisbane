@@ -13,8 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { firebase, FirebaseUIModule } from 'firebaseui-angular';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -34,6 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LogoutDailogComponent } from './components/logout-dailog/logout-dailog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SigninComponent } from './components/signin/signin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -73,6 +74,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ReviewComponent,
     AnalyticsComponent,
     LogoutDailogComponent,
+    SigninComponent,
   ],
   imports: [
     CommonModule,
@@ -86,6 +88,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    provideAuth(() => getAuth()),
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MatCheckboxModule,
@@ -98,7 +101,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatSelectModule,
     MatMenuModule,
     MatDialogModule,
-    SigninComponent,
+    HttpClientModule,
   ],
 })
 export class AdminModule {}

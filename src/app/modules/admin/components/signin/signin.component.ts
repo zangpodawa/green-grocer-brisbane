@@ -1,9 +1,24 @@
-import { Roles, User } from 'src/app/auth.service';
+// import { Roles, User } from './../../auth.service';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormsModule } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+
+export interface User {
+  uid: string | null;
+  email: string | null;
+  displayName: string | null;
+}
+
+export interface Claims {
+  token: '';
+}
+
+export interface Roles {
+  uid: string;
+  isAdmin: boolean;
+}
 
 @Component({
   selector: 'app-signin',
@@ -22,14 +37,24 @@ export class SigninComponent {
   spinner = false;
   userUid = '';
 
+  admin: Observable<User> | undefined;
   user = this.fb.group({
     email: ['', Validators.required, Validators.email],
     password: ['', Validators.required],
   });
 
-  admin: Observable<User> | undefined;
-  roles: Observable<Roles> | undefined;
+  // admin: Observable<User> | undefined;
+  // roles: Observable<Roles> | undefined;
   adminError: boolean | undefined;
+
+  getUid(user: Observable<User>) {
+    user.subscribe((data) => {
+      if (data.uid) {
+        this.userUid = data.uid;
+        console.log(this.userUid);
+      }
+    });
+  }
 
   async signIn() {
     this.invalid = false;
@@ -47,9 +72,11 @@ export class SigninComponent {
             this.getUid(this.admin);
           }
           this.auth.login(this.userUid).subscribe(async (data) => {
+            console.log(data.token);
+
             await this.auth.tokenSignIn(data.token);
             this.isAdmin();
-            this.router.navigate(['account']);
+            this.router.navigate(['myadmin']);
           });
         })
         .catch((error) => {
@@ -66,17 +93,9 @@ export class SigninComponent {
   }
 
   get() {
-    this.auth.getFromServer().subscribe((data) => {
-      console.log(`data from my node ${data}`);
-    });
-  }
-
-  getUid(user: Observable<User>) {
-    user.subscribe((data) => {
-      if (data.uid) {
-        this.userUid = data.uid;
-      }
-    });
+    // this.auth.getFromServer().subscribe((data) => {
+    //   console.log(`data from my node ${data}`);
+    // });
   }
 
   isAdmin() {
@@ -91,7 +110,7 @@ export class SigninComponent {
     }, 3000);
   }
 
-  // googleSignin() {
-  //   this.auth.googleSignIn();
-  // }
+  googleSignin() {
+    // this.auth.googleSignIn();
+  }
 }
