@@ -1,3 +1,4 @@
+import { SigninComponent } from './modules/admin/components/signin/signin.component';
 import { LoginComponent } from './components/login/login.component';
 import { CancelComponent } from './components/cancel/cancel.component';
 import { SuccessComponent } from './components/success/success.component';
@@ -106,11 +107,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: SigninComponent,
   },
   {
     path: 'myadmin',
-    // canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard],
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },

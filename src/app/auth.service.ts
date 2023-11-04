@@ -16,6 +16,7 @@ import {
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, retry, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 
 export interface UserModel {
   userId: string;
@@ -53,16 +54,27 @@ export class AuthService {
   user: UserModel | undefined;
   upperAdmin = false;
 
-  admin$: Observable<User> | undefined;
-  curentName: any;
-  adminUid: any;
-  url = 'http:localhost:8080';
+  curentName = new BehaviorSubject<string>('');
+  url = 'http://localhost:8080/';
+
+  curentRole = new BehaviorSubject<Roles>({ uid: '', isAdmin: false });
+  roleSource$ = this.curentRole.asObservable();
+
+  currentError = new BehaviorSubject<boolean>(false);
+  errorSource = this.currentError.asObservable();
+
+  adminUid = new BehaviorSubject<User>({
+    uid: 'default',
+    email: 'default',
+    displayName: 'default',
+  });
+  admin$ = this.adminUid.asObservable();
 
   constructor(
     private auth: AngularFireAuth,
     private router: Router,
     private data: DataService<Product>,
-    private http: HttpClient
+    private http: HttpClient // private http: HttpClient
   ) {
     let db = getFirestore();
     this.auth.authState.forEach((user) => {
@@ -94,9 +106,9 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
-  login(uid: string): Observable<Claims> {
-    return this.http.post<Claims>(this.url + 'login', { id: uid });
-  }
+  // login(uid: string): Observable<Claims> {
+  //   return this.http.post<Claims>(this.url + 'login', { id: uid });
+  // }
   // getJWT() {
   //   return this.auth.user.subscribe((current) => current?.getIdToken());
   // }
@@ -115,11 +127,12 @@ export class AuthService {
       password
     );
     const currentUser = await userCredentials.user;
+    // console.log(currentUser);
     this.curentName.next(currentUser.uid);
     this.adminUid.next({
       uid: currentUser.uid,
-      email: currentUser.email,
-      displayName: currentUser.displayName,
+      email: currentUser.email as string,
+      displayName: currentUser.displayName as string,
     });
     localStorage.removeItem('roles');
   }
@@ -164,7 +177,11 @@ export class AuthService {
     auth.signOut();
   }
 
-  getFromServer() {
-    return this.http.get(this.url);
+  login(uid: string): Observable<Claims> {
+    return this.http.post<Claims>(this.url + 'login', { id: uid });
   }
+
+  // getFromServer() {
+  //   return this.http.get(this.url);
+  // }
 }

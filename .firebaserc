@@ -1,14 +1,14 @@
 {
   "targets": {
-    "upperwestsidedeli": {
+    "greengrocercafe": {
       "hosting": {
-        "upperwestsidedeli": [
-          "upperwestsidedeli"
+        "greengrocercafe": [
+          "greengrocercafe"
         ]
       }
     }
   },
   "projects": {
-    "default": "upperwestsidedeli"
+    "default": "greengrocercafe"
   }
 }

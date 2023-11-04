@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { AdminRoutingModule } from './modules/admin/admin-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,7 +34,7 @@ import { CroissantComponent } from './components/croissant/croissant.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CartComponent } from './components/cart/cart.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
+// import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import {
   provideFirestore,
@@ -63,7 +64,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './components/login/login.component';
-import { SigninComponent } from './modules/admin/components/signin/signin.component';
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInSuccessUrl: 'login',
@@ -120,7 +120,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FeedbackDialogComponent,
     OrderCompleteDialogComponent,
     LoginComponent,
-    SigninComponent,
   ],
   imports: [
     BrowserModule,
